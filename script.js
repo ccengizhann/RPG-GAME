@@ -17,17 +17,17 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterNameText = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 
-const weapons =[
+const weapons = [
   {
     name: "stick",
     power: 5
   },
   {
     name: "dagger",
-    power: 30 
+    power: 30
   },
   {
-    name:"claw hammer",
+    name: "claw hammer",
     power: 50
   },
   {
@@ -42,14 +42,14 @@ const locations = [
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
     text: "You are in the town square. You see a sign that says \"Store\"."
-  
+
   },
   {
     name: "store",
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
-     "button functions": [buyHealth, buyWeapon, goTown],
+    "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store."
-                    
+
   }
 ]
 
@@ -59,9 +59,9 @@ button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
-function update(location){
+function update(location) {
   button1.innerText = location["button text"][0];
-  button2.innerText = location ["button text"][1];
+  button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
@@ -70,37 +70,37 @@ function update(location){
 
 }
 
-function goTown(){
+function goTown() {
   update(locations[0]);
 }
 
-function goStore(){
- update(locations[1])
-  
+function goStore() {
+  update(locations[1])
+
 }
 
-function goCave(){
+function goCave() {
   update(locations[2])
 }
 
-function fightDragon(){
+function fightDragon() {
   console.log("Fighting dragon.")
 }
 
-function buyHealth(){
-  if(gold >= 10){
+function buyHealth() {
+  if (gold >= 10) {
     gold -= 10;
     health += 10;
     goldText.innerText = gold;
     healthText.innetText = health;
-  }else{
+  } else {
     text.innerText = "You do not have enough gold to buy health.";
   }
-  
+
 }
 
-function buyWeapon(){
-  if(currentWeapon < weapons.length - 1){
+function buyWeapon() {
+  if (currentWeapon < weapons.length - 1) {
     gold -= 30;
     currentWeapon++;
     goldText.innerText = gold;
@@ -109,7 +109,7 @@ function buyWeapon(){
     inventory.push(newWeapon);
     text.innerText += "In your inventory you have: " + inventory;
   }
-  else{
+  else {
     text.innerText = "You do not have enough gold to buy a weapon.";
   }
 }
